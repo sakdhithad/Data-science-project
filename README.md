@@ -80,24 +80,27 @@ The project rigorously tested multiple classification algorithms combined with d
 
 ## 🏆 Model Results
 
-The models were evaluated primarily on **Recall** (to minimize False Negatives) and **F1-Score** (the harmonic mean of Precision and Recall). The table below summarizes the test set performance for the best-performing iteration of each model.
+The models were evaluated primarily on **Recall** (to minimize False Negatives). The table below summarizes the test set performance for the best-performing iteration of each model.
 
-| Model & Technique | Accuracy | Precision | **Recall** | **F1-Score** |
+### 📈 Model Performance Comparison (Sorted by Recall then Precision)
+---
+
+| model_name | accuracy | precision | recall | f1_score |
 | :--- | :--- | :--- | :--- | :--- |
-| **Logistic Regression (Undersampling)** | 0.69 | 0.20 | **0.62** | 0.30 |
-| **ElasticNet (Undersampling)** | 0.69 | 0.20 | **0.61** | 0.30 |
-| **Ridge Classifier (Reweighting)** | 0.81 | 0.33 | 0.49 | 0.39 |
-| **Logistic Regression (Reweighting)** | 0.82 | 0.33 | 0.44 | 0.38 |
-| ElasticNet (Reweighting) | 0.82 | 0.32 | 0.42 | 0.36 |
-| KNN (SMOTE) | 0.77 | 0.24 | 0.45 | 0.32 |
-| KNN (Undersampling) | 0.70 | 0.21 | 0.60 | 0.31 |
+| Logistic Regression (Class Reweighting) | 0.375570 | 0.181818 | 0.886228 | 0.301733 |
+| ElasticNet (Class Reweighting) | 0.273473 | 0.159827 | 0.886228 | 0.270814 |
+| Ridge (Class Reweighting) | 0.449407 | 0.196106 | 0.844311 | 0.318284 |
+| Logistic Regression (Undersampling) | 0.513218 | 0.202593 | 0.748503 | 0.318878 |
+| Logistic Regression (SMOTE) | 0.577940 | 0.221805 | 0.706587 | 0.337625 |
+| ElasticNet (SMOTE) | 0.670009 | 0.265060 | 0.658683 | 0.378007 |
+| Ridge (Undersampling) | 0.671832 | 0.265207 | 0.652695 | 0.377163 |
+| Ridge (SMOTE) | 0.663628 | 0.259524 | 0.652695 | 0.371380 |
+| ElasticNet (Undersampling) | 0.670009 | 0.261614 | 0.640719 | 0.371528 |
+| KNN (Undersampling) | 0.650866 | 0.235294 | 0.574850 | 0.333913 |
+| KNN (SMOTE) | 0.614403 | 0.207763 | 0.544910 | 0.300826 |
 
 ### Conclusion
 
-The **Logistic Regression (Undersampling)** model achieved the highest **Recall** of **0.62**, meaning it correctly identified 62% of the actual CHD risk cases in the test set.
-
-While Undersampling and SMOTE boosted recall, they significantly lowered precision (high False Positives). The **Ridge Classifier (Class Reweighting)** provided the best balance between recall and precision, yielding a Recall of **0.49** and the highest **F1-Score of 0.39**.
-
-For a real-world medical screening tool where **False Negatives are life-critical**, the high recall of the Undersampling models is preferable, despite the higher number of false alarms (low precision).
+The **Logistic Regression (Class Reweighting)** model achieved the highest **Recall** of **0.886228**, meaning it correctly identified 88% of the actual CHD risk cases in the test set. For a real-world medical screening tool where **False Negatives are life-critical**, the high recall of the Class Reweighting models is preferable, despite the higher number of false alarms (low precision).
 
 
